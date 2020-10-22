@@ -1,6 +1,6 @@
-from abc import ABC
+from abc import ABC, abstractmethod
 
 class Aggregate(ABC):
     @abstractmethod
-    def interator(self):
+    def iterator(self):
         pass

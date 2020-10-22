@@ -1,22 +1,23 @@
 from aggregate import Aggregate
 from book import Book
-from book_shelf_iterator import BookShelfIterator
-from array import array
+import book_shelf_iterator as bsi
+
 
 class BookShelf(Aggregate):
-    books = array(typecode=Book)
-    last = 0
     def __init__(self, max_size):
-        self.books = Book(max_size)
+        self.books = [0] * max_size
+        self.last = 0
+
     def get_book_at(self, index):
-        return books[index]
+        return self.books[index]
+
     def append_book(self, book):
-        self.books[last] = book
-        last += 1
+        self.books[self.last] = book
+        self.last += 1
+
     def get_length(self):
-        return last
-    
-    @abstractmethod
-    def iterator():
-        return BookShelfIterator()
+        return self.last
+
+    def iterator(self):
+        return bsi.BookShelfIterator(self)
     
