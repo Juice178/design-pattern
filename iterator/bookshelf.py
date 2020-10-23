@@ -1,6 +1,6 @@
 from aggregate import Aggregate
 from book import Book
-import book_shelf_iterator as bsi
+import bookshelf_iterator as bsi
 
 
 class BookShelf(Aggregate):
