@@ -18,6 +18,6 @@ class StringDisplay(AbstractDisplay):
 
     def print_line(self):
         print('+', end='')
-        for i in range(self._width):
+        for _ in range(self._width):
             print('-', end='')
         print('+')
