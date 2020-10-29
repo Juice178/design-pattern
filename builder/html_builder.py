@@ -7,7 +7,7 @@ class HTMLBuilder(Builder):
 
     def make_title(self, title):
         self._filename = title + ".html"
-        self._writer = open(self._filename)
+        self._writer = open(self._filename, "w")
         self._writer.write(f"<html><head><title>{title}</title></head><body>\n")
         self._writer.write(f"<h1>{title}</h1>\n")
     
