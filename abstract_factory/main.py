@@ -1,4 +1,4 @@
-from factory import *
+from factory import Factory
 import sys
 
 def main(*args):
