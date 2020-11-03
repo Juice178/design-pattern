@@ -1,11 +1,9 @@
-import sys
-
 class Hand:
     HANDVALUE_ROCK = 0
     HANDVALUE_PAPER = 1
     HANDVAUE_SCISSORS = 2
     hand = []
-    name = ["Rock", "Paper", "scissors"]
+    name = ["Rock", "Paper", "Scissors"]
 
     def __init__(self, handvalue):
         self._handvalue = handvalue
