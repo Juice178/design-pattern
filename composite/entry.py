@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from multipledispatch import dispatch
+from pythonlangutil.overload import Overload, signature
 
 class FileTreatmentException(Exception):
     pass
@@ -14,16 +14,18 @@ class Entry(ABC):
         pass
 
     def add(self, entry):
-        raise FileTreatmentException()
+        raise FileTreatmentException("It is not possible to add an entry to a file.")
 
-    @dispatch(object)
-    def print_list(self):
-        self.print_list("")
-
-    @abstractmethod
-    @dispatch(object, str)
+    @Overload
+    @signature("str")
     def print_list(self, prefix):
         pass
 
+    @print_list.overload
+    @signature()
+    def print_list(self):
+        self.print_list("")
+
+
     def __str__(self):
-        return self.get_name() + "(" + str(self.get_size()) + ")"
+        return self.get_name() + " (" + str(self.get_size()) + ")"

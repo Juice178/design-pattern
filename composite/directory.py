@@ -1,5 +1,5 @@
 from entry import Entry
-from multipledispatch import dispatch
+from pythonlangutil.overload import Overload, signature
 
 class Directory(Entry):
     def __init__(self, name):
@@ -18,9 +18,21 @@ class Directory(Entry):
     def add(self, entry):
         self._directory.append(entry)
         return self
-    
-    @dispatch(str)
+
+    # @Overload
+    # @signature()
+    # def print_list(self):
+    #     self.print_list("")
+
+    @Overload
+    @signature("str")
     def print_list(self, prefix):
-        print(f"{prefix} / {self}")
+        print(f"{prefix}/{self}")
         for entry in self._directory:
-            entry.print_list(f"{prefix} / {self._name}")
+            entry.print_list(f"{prefix}/{self._name}")
+
+    
+    @print_list.overload
+    @signature()
+    def print_list(self):
+        self.print_list("")

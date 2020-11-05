@@ -13,6 +13,6 @@ class File(Entry):
         return self._size
     
     def print_list(self, prefix):
-        print(f"{prefix} / {self}" )
+        print(f"{prefix}/{self}" )
 
 
