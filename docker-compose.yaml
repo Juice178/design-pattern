@@ -1,0 +1,8 @@
+version: '3'
+services:
+  design-pattern:
+    build: .
+    container_name: 'design-pattern'
+    volumes:
+      - $PWD/src/:/opt/src
+    tty: true
