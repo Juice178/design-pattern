@@ -1,11 +1,7 @@
 from __future__ import annotations
 from abc import ABC, abstractmethod
 from collections.abc import Iterator
-
-
-
-class FileTreatmentException(Exception):
-    pass
+from exception import FileTreatmentException
 
 
 class Entry(ABC):

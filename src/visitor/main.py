@@ -1,6 +1,8 @@
 from directory import Directory
 from list_visitor import ListVisitor
 from file import File
+from exception import FileTreatmentException
+import traceback
 
 
 def main():
@@ -33,8 +35,8 @@ def main():
         tomura.add(File("game.doc", 400))
         tomura.add(File("junk.mail", 500))
         root_dir.accept(ListVisitor())
-    except Exception as e:
-        print(e)
+    except FileTreatmentException as e:
+        traceback.print_tb(e.__traceback__)
 
 if __name__ == "__main__":
     main()
