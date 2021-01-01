@@ -8,10 +8,10 @@ if TYPE_CHECKING:
 
 
 class Directory(Entry):
-    _dir = []
+    # _dir = []
     def __init__(self, name):
         self._name = name
-        # self._dir = []
+        self._dir = []
     
     def get_name(self) -> str:
         return self._name 
