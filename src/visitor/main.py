@@ -13,10 +13,10 @@ def main():
 
         root_dir.add(bind_dir)
         root_dir.add(tmp_dir)
+        root_dir.add(usr_dir)
         bind_dir.add(File("vi", 10000))
         bind_dir.add(File("latext", 20000))
         # print(len(root_dir._dir), len(bind_dir._dir))
-        print(root_dir._dir)
         root_dir.accept(ListVisitor())
 
         print("")
