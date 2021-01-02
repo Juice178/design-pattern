@@ -3,7 +3,7 @@ from trouble import Trouble
 
 
 class SpecialSupport(Support):
-    def __init__(slef, name: str, number: int):
+    def __init__(self, name: str, number: int) -> None:
         super().__init__(name)
         self._number = number 
     
