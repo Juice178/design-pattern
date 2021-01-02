@@ -5,7 +5,7 @@ from special_support import SpecialSupport
 from trouble import Trouble
 
 
-def main():
+def main() -> None:
     alice = NoSupport("Alice")
     bob = LimitSupport("Bob", 100)
     charlie = SpecialSupport("Charlie", 429)

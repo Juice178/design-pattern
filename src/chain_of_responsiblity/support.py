@@ -1,9 +1,10 @@
+from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Optional, final
 from trouble import Trouble
 
 class Support(ABC):
-    def __init__(self, name: str):
+    def __init__(self, name: str) -> None:
         self._name = name 
         self._next = None # type: Optional[Support]
 

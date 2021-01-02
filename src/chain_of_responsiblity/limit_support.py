@@ -2,7 +2,7 @@ from support import Support
 from trouble import Trouble
 
 class LimitSupport(Support):
-    def __init__(self, name: str, limit: int):
+    def __init__(self, name: str, limit: int) -> None:
         super().__init__(name)
         self._limit = limit 
 

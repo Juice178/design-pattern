@@ -3,7 +3,7 @@ from trouble import Trouble
 
 
 class OddSupport(Support):
-    def __init__(self, name: str):
+    def __init__(self, name: str) -> None:
         super().__init__(name)
 
     def resolve(self, trouble: Trouble) -> bool:

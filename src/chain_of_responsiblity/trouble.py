@@ -1,5 +1,5 @@
 class Trouble:
-    def __init__(self, number: int):
+    def __init__(self, number: int) -> None:
         self._number = number
     
     def get_number(self) -> int:
