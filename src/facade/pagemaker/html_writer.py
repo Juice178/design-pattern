@@ -25,5 +25,6 @@ class HtmlWriter:
     def close(self) -> None:
         self._writer.write("<body>")
         self._writer.write("</html>\n")
+        self._writer.close()
     
     
