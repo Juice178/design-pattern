@@ -1,4 +1,4 @@
-from memento import Memento
+from game.memento import  Memento
 import random
 
 
@@ -20,7 +20,7 @@ class Gamer:
             self._money /= 2
             print("Money is halved.")
         elif dice == 6:
-            fruit = get_fruit()
+            fruit = self.get_fruit()
             print(f"Got fruit: {fruit}")
             self._fruits.append(fruit)
         else:
@@ -31,7 +31,7 @@ class Gamer:
         it = iter(self._fruits)
         while (fruit := next(it, None)) is not None:
             if fruit.startswith("good"):
-                m.append(fruit)
+                m.add_fruit(fruit)
         return m
 
     def restore_memnto(self, memento: Memento) -> None:
@@ -39,7 +39,7 @@ class Gamer:
         self._fruits = memento.get_fruits()
 
     def __str__(self) -> str:
-        return f"[money = {money}, fruits = {fruits} ]"
+        return f"[money = {self._money}, fruits = {self._fruits} ]"
 
     def get_fruit(self) -> str:
         prefix = ""
