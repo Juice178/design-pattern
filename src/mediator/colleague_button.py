@@ -2,8 +2,11 @@ from colleague import Colleague
 from mediator import Mediator
 from PyQt5.QtWidgets import QPushButton
 
+class Meta(type(QPushButton), type(Colleague)):
+    pass
 
-class ColleagueButton(QPushButton, Colleague):
+
+class ColleagueButton(QPushButton, Colleague,  metaclass=Meta):
     def __init__(self, caption: str) -> None:
         super().__init__(caption)
 
