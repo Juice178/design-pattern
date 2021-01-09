@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from observer import Observer
 
 
-class NumberGenerator:
+class NumberGenerator(ABC):
     def __init__(self) -> None:
         self._observers = []
 
