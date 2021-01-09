@@ -11,6 +11,6 @@ class GraphObserver(Observer):
         print(f"GraphObserver")
         count = generator.get_number()
         for _ in range(count):
-            print("*")
+            print("*", end="")
         print("")
-        sleep(10)
+        sleep(1)

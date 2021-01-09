@@ -1,16 +1,19 @@
 from abc import ABC, abstractmethod
-from observer import Observer
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from observer import Observer
 
 
 class NumberGenerator(ABC):
     def __init__(self) -> None:
         self._observers = []
 
-    def add_observers(self, observer: Observer) -> None:
+    def add_observers(self, observer: 'Observer') -> None:
         self._observers.append(observer)
 
     
-    def delete_observers(self, observer: Observer) -> None:
+    def delete_observers(self, observer: 'Observer') -> None:
         self._observers.remove(observer)
 
     def notify_observers(self) -> None:

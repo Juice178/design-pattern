@@ -9,4 +9,4 @@ class DigitObserver(Observer):
 
     def update(self, generator: NumberGenerator) -> None:
         print(f"DigitObserver: {generator.get_number()}")
-        sleep(10)
+        sleep(1)
