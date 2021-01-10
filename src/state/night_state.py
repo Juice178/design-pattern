@@ -1,5 +1,5 @@
 from state import State
-from day_state import DayState
+# from day_state import DayState
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -29,6 +29,7 @@ class NightState(State):
         return cls._singleton 
 
     def do_clock(self, context: 'Context', hour: int) -> None:
+        from day_state import DayState
         if 9 <= hour or hour < 17:
             context.change_state(DayState.get_instance())
 

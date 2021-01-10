@@ -3,9 +3,18 @@ from PyQt5.QtCore import pyqtSlot
 from context import Context
 from day_state import DayState
 from night_state import NightState
+from typing import TYPE_CHECKING
 import sys
 
-class SafeFrame(QWidget, Context):
+# if TYPE_CHECKING:
+#     from day_state import DayState
+#     from night_state import NightState
+
+class SafelFrameMeta(type(QWidget), type(Context)):
+    pass
+
+
+class SafeFrame(QWidget, Context, metaclass=SafelFrameMeta):
     def __init__(self, title):
         super().__init__()
         self._title = title
@@ -25,10 +34,12 @@ class SafeFrame(QWidget, Context):
         self.button_exit = QPushButton('Exit', self)
 
         self._state = DayState.get_instance()
-        self.button_use.clicked.connect(action_performed, 'button_use')
-        self.button_alarm.clicked.connect(action_performed, 'button_alarm')
-        self.button_phone.clicked.connect(action_performed, 'button_phone')
-        self.button_exit.clicked.connect(action_performed, 'button_exit')
+        print(self._state)
+        lambda: self.action_performed('button_use')
+        self.button_use.clicked.connect(lambda: self.action_performed('button_use'))
+        self.button_alarm.clicked.connect(lambda: self.action_performed('button_alarm'))
+        self.button_phone.clicked.connect(lambda: self.action_performed('button_phone'))
+        self.button_exit.clicked.connect(lambda: self.action_performed('button_exit'))
 
     @pyqtSlot()
     def action_performed(self, button) -> None:
@@ -52,7 +63,7 @@ class SafeFrame(QWidget, Context):
         print(clock_string)
         self._state.do_clock(self, hour)
 
-    def change_state(self, state: State) -> None:
+    def change_state(self, state: 'State') -> None:
         print(f"{self._state} -> {state}")
         self._state = state
 

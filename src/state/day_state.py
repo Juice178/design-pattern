@@ -1,5 +1,5 @@
 from state import State
-from night_state import NightState
+# from night_state import NightState
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -10,11 +10,13 @@ class DayState(State):
     _singleton = None
     _has_created_before = False
 
-    def __init__(self) -> None:
+    def __init__(self):
+        print("hi")
         if not self._has_created_before:
             self.create_instance()
             self.update()
             print("An instance is created.")
+        return self._singleton
 
     @classmethod
     def update(cls):
@@ -22,13 +24,15 @@ class DayState(State):
 
     @classmethod
     def create_instance(cls):
-        cls._singleton = cls()
+        cls._singleton = DayState()
     
     @classmethod
     def get_instance(cls) -> State:
-        return cls._singleton 
+        # cls.create_instance()
+        return DayState()
 
     def do_clock(self, context: 'Context', hour: int) -> None:
+        from night_state import NightState
         if hour < 9 or 17 <= hour:
             context.change_state(NightState.get_instance())
 
