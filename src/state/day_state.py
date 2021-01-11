@@ -8,28 +8,18 @@ if TYPE_CHECKING:
 
 class DayState(State):
     _singleton = None
-    _has_created_before = False
 
     def __init__(self):
-        print("hi")
-        if not self._has_created_before:
-            self.create_instance()
-            self.update()
-            print("An instance is created.")
-        return self._singleton
+      if DayState._singleton != None:
+         raise Exception("This class is a singleton!")
+      else:
+         DayState._singleton = self
 
-    @classmethod
-    def update(cls):
-        cls._has_created_before = True
-
-    @classmethod
-    def create_instance(cls):
-        cls._singleton = DayState()
-    
-    @classmethod
-    def get_instance(cls) -> State:
-        # cls.create_instance()
-        return DayState()
+    @staticmethod
+    def get_instance() -> State:
+        if DayState._singleton == None:
+            DayState()
+        return DayState._singleton
 
     def do_clock(self, context: 'Context', hour: int) -> None:
         from night_state import NightState

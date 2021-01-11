@@ -34,7 +34,7 @@ class SafeFrame(QWidget, Context, metaclass=SafelFrameMeta):
         self.button_exit = QPushButton('Exit', self)
 
         self._state = DayState.get_instance()
-        print(self._state)
+        # print(self._state)
         lambda: self.action_performed('button_use')
         self.button_use.clicked.connect(lambda: self.action_performed('button_use'))
         self.button_alarm.clicked.connect(lambda: self.action_performed('button_alarm'))
