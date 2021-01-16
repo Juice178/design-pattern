@@ -3,7 +3,8 @@ class Singleton:
     _has_created_before = False
     def __init__(self):
         if not self._has_created_before:
-            self.create_instance()
+            # self.create_instance()
+            cls._singleton = Singleton()
             self.update()
             print("An instance is created.")
 
